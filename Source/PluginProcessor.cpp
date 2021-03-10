@@ -378,19 +378,22 @@ void QVCA::setStateInformation (const void* data, int sizeInBytes)
 
 	// read and compare header consisting of plugin name and version 
 	if (std::memcmp(data, JucePlugin_Name, sizeof(JucePlugin_Name)) != 0) 
-		throw std::runtime_error("error reading plugin name"); 
-	data += sizeof(JucePlugin_Name); 
+		throw std::runtime_error("error reading plugin name");
+
+	char *wat = (char*)data;
+
+	wat += sizeof(JucePlugin_Name);
 
 	if (std::memcmp(data, JucePlugin_VersionString, sizeof(JucePlugin_VersionString)) != 0) 
 		throw std::runtime_error("error reading plugin version string"); 
-	data += sizeof(JucePlugin_VersionString); 
+	wat += sizeof(JucePlugin_VersionString);
 
 	// restore parameter values 
-	std::memcpy(paramValues, data, sizeof(paramValues)); 	
-	data += sizeof(paramValues); 
+	std::memcpy(paramValues, wat, sizeof(paramValues));
+	wat += sizeof(paramValues);
 
 	// read and compare footer 
-	if (std::memcmp(data, JucePlugin_Name, sizeof(JucePlugin_Name)) != 0) 
+	if (std::memcmp(wat, JucePlugin_Name, sizeof(JucePlugin_Name)) != 0)
 		throw std::runtime_error("error reading plugin name"); 
 }
 
