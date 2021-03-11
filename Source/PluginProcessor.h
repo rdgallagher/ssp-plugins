@@ -22,11 +22,11 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Percussa.h" 
 
-class QVCA: public AudioProcessor
+class DATA: public AudioProcessor
 {
 public:
-	QVCA();
-	~QVCA();
+	DATA();
+	~DATA();
 
 	void prepareToPlay (double sampleRate, int samplesPerBlock) override;
 	void releaseResources() override;
@@ -75,7 +75,7 @@ public:
 	std::vector<String> inputNames; 
 	std::vector<String> outputNames; 
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (QVCA)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DATA)
 };
 
 #endif 

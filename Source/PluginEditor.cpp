@@ -3,7 +3,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-QVCAEditor::QVCAEditor (QVCA& p)
+DATAEditor::DATAEditor (DATA& p)
     : AudioProcessorEditor (&p), processor (p)
 {
 	// set this to true to see the parameter values update 
@@ -17,7 +17,7 @@ QVCAEditor::QVCAEditor (QVCA& p)
 		o->setInfo(String("In")+String(i+1)); 
 		o->setInfoCol(Colours::white); 
 		addAndMakeVisible(o); 
-		in.add(o); 
+		in.add(o);
 	}
 
 	for (int i=0; i<nScopes; i++) { 
@@ -41,11 +41,11 @@ QVCAEditor::QVCAEditor (QVCA& p)
 	startTimer(50); 
 }
 
-QVCAEditor::~QVCAEditor()
+DATAEditor::~DATAEditor()
 {
 }
 
-void QVCAEditor::timerCallback() 
+void DATAEditor::timerCallback()
 { 
 	for (int i=0; i<nScopes; i++) { 
 		in[i]->repaint(); 
@@ -59,7 +59,7 @@ void QVCAEditor::timerCallback()
 	repaint(); 
 }
 
-void QVCAEditor::paint(Graphics& g)
+void DATAEditor::paint(Graphics& g)
 {
 	g.fillAll (Colours::black);
 
@@ -138,7 +138,7 @@ void QVCAEditor::paint(Graphics& g)
 	} 
 }
 
-void QVCAEditor::resized()
+void DATAEditor::resized()
 {
 	int w=getWidth(); 
 	int h=getHeight();

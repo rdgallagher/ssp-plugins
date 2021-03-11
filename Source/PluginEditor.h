@@ -23,27 +23,27 @@
 #include "PluginProcessor.h"
 #include "Oscilloscope.h" 
 
-class QVCAEditor  : public AudioProcessorEditor, public Timer 
+class DATAEditor  : public AudioProcessorEditor, public Timer
 {
 public:
 	static const int nScopes = 8; 
 	static const int keepout = 100; 
 
-	QVCAEditor (QVCA&);
-	~QVCAEditor();
+	DATAEditor (DATA&);
+	~DATAEditor();
 
 	void paint (Graphics&) override;
 	void resized() override;
 	void timerCallback(); 
 
 private:
-	QVCA& processor;
+	DATA& processor;
 	bool showParamValues; 
 
 	OwnedArray<Oscilloscope> in; 
 	OwnedArray<Oscilloscope> out; 
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (QVCAEditor)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DATAEditor)
 };
 
 #endif  

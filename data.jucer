@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="LFrQVa" name="qvca" projectType="audioplug" version="1.0.0"
-              bundleIdentifier="com.percussa.qvca" includeBinaryInAppConfig="1"
+<JUCERPROJECT id="LFrQVa" name="data" projectType="audioplug" version="1.0.0"
+              bundleIdentifier="com.percussa.ssp.plugins.data" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="1" buildAU="0" buildRTAS="0" buildAAX="0"
-              pluginName="qvca" pluginDesc="qvca" pluginManufacturer="percussa"
+              pluginName="data" pluginDesc="data" pluginManufacturer="Rob Gallagher"
               pluginManufacturerCode="Perc" pluginCode="DATA" pluginChannelConfigs="{8, 8}"
               pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
-              pluginAUExportPrefix="qvcaAU" pluginRTASCategory="" aaxIdentifier="com.percussa.qvca"
+              pluginAUExportPrefix="dataAU" pluginRTASCategory="" aaxIdentifier="com.percussa.ssp.plugins.data"
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="3.1.1"
               companyName="percussa" companyWebsite="www.percussa.com">
-  <MAINGROUP id="LI9Efo" name="qvca">
+  <MAINGROUP id="LI9Efo" name="data">
     <GROUP id="{C0553C7B-09BA-4FC3-4E85-F32F355F9FF1}" name="Source">
       <FILE id="TjiVmn" name="Percussa.h" compile="0" resource="0" file="Source/Percussa.h"/>
       <FILE id="ODpziw" name="Oscilloscope.cpp" compile="1" resource="0"
@@ -29,9 +29,9 @@
     <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4" vst3Folder="~/SDKs/vst3-sdk">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
-                       targetName="qvca" binaryPath="Builds/Linux/build/Debug" linuxArchitecture=""/>
+                       targetName="data" binaryPath="Builds/Linux/build/Debug" linuxArchitecture=""/>
         <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="3"
-                       targetName="qvca" binaryPath="Builds/Linux/build/Release" linuxArchitecture=""/>
+                       targetName="data" binaryPath="Builds/Linux/build/Release" linuxArchitecture=""/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../juce"/>

@@ -195,10 +195,10 @@
  #define JucePlugin_Build_AAX              0
 #endif
 #ifndef  JucePlugin_Name
- #define JucePlugin_Name                   "qvca"
+ #define JucePlugin_Name                   "data"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "qvca"
+ #define JucePlugin_Desc                   "data"
 #endif
 #ifndef  JucePlugin_Manufacturer
  #define JucePlugin_Manufacturer           "percussa"
@@ -213,7 +213,7 @@
  #define JucePlugin_ManufacturerCode       'Perc'
 #endif
 #ifndef  JucePlugin_PluginCode
- #define JucePlugin_PluginCode             'QVCA'
+ #define JucePlugin_PluginCode             'DATA'
 #endif
 #ifndef  JucePlugin_MaxNumInputChannels
  #define JucePlugin_MaxNumInputChannels    8
@@ -261,16 +261,16 @@
  #define JucePlugin_AUSubType              JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_AUExportPrefix
- #define JucePlugin_AUExportPrefix         qvcaAU
+ #define JucePlugin_AUExportPrefix         dataAU
 #endif
 #ifndef  JucePlugin_AUExportPrefixQuoted
- #define JucePlugin_AUExportPrefixQuoted   "qvcaAU"
+ #define JucePlugin_AUExportPrefixQuoted   "dataAU"
 #endif
 #ifndef  JucePlugin_AUManufacturerCode
  #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
 #endif
 #ifndef  JucePlugin_CFBundleIdentifier
- #define JucePlugin_CFBundleIdentifier     com.percussa.qvca
+ #define JucePlugin_CFBundleIdentifier     com.percussa.ssp.plugins.data
 #endif
 #ifndef  JucePlugin_RTASCategory
  #define JucePlugin_RTASCategory           ePlugInCategory_None
@@ -288,7 +288,7 @@
  #define JucePlugin_RTASDisableMultiMono   0
 #endif
 #ifndef  JucePlugin_AAXIdentifier
- #define JucePlugin_AAXIdentifier          com.percussa.qvca
+ #define JucePlugin_AAXIdentifier          com.percussa.ssp.plugins.data
 #endif
 #ifndef  JucePlugin_AAXManufacturerCode
  #define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode

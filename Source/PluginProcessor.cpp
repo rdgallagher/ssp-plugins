@@ -7,28 +7,28 @@
 #include "PluginEditor.h"
 #include "Percussa.h" 
 
-QVCA::QVCA(): 
+DATA::DATA():
 	inputNames  ({ "In1",  "In2",  "In3",  "In4",  "In5",  "In6",  "In7",  "In8"  }),  
 	outputNames ({ "Out1", "Out2", "Out3", "Out4", "Out5", "Out6", "Out7", "Out8" })   
 {
 	std::memset(paramValues, 0, sizeof(paramValues)); 
 }
 
-QVCA::~QVCA()
+DATA::~DATA()
 {
 }
 
-const String QVCA::getName() const
+const String DATA::getName() const
 {
     return JucePlugin_Name;
 }
 
-int QVCA::getNumParameters()
+int DATA::getNumParameters()
 {
     return numParams; 
 }
 
-float QVCA::getParameter (int index)
+float DATA::getParameter (int index)
 {
 	if (index < Percussa::sspFirst) return 0.00f; 
 	if (index >= Percussa::sspLast) return 0.00f; 
@@ -36,7 +36,7 @@ float QVCA::getParameter (int index)
 	return paramValues[index-Percussa::sspFirst];
 }
 
-void QVCA::setParameter (int index, float newValue)
+void DATA::setParameter (int index, float newValue)
 {
 	// The SSP's software uses VST parameters to pass the state of its hardware 
 	// buttons and encoders to your plugin. See Percussa.h, these parameters 
@@ -65,7 +65,7 @@ void QVCA::setParameter (int index, float newValue)
 	// data like we do here.   
 
 	//Logger::writeToLog(String::formatted(
-	//	"QVCA::setParameter: index=%d newValue=%4.2f", 
+	//	"DATA::setParameter: index=%d newValue=%4.2f",
 	//		index, newValue)); 
 
 	if (index < Percussa::sspFirst) return; 
@@ -162,37 +162,37 @@ void QVCA::setParameter (int index, float newValue)
 	}
 }
 
-const String QVCA::getParameterName (int index)
+const String DATA::getParameterName (int index)
 {
     return String();
 }
 
-const String QVCA::getParameterText (int index)
+const String DATA::getParameterText (int index)
 {
     return String();
 }
 
-const String QVCA::getInputChannelName (int channelIndex) const
+const String DATA::getInputChannelName (int channelIndex) const
 {
     return inputNames[channelIndex]; 
 }
 
-const String QVCA::getOutputChannelName (int channelIndex) const
+const String DATA::getOutputChannelName (int channelIndex) const
 {
     return outputNames[channelIndex]; 
 }
 
-bool QVCA::isInputChannelStereoPair (int index) const
+bool DATA::isInputChannelStereoPair (int index) const
 {
     return false;
 }
 
-bool QVCA::isOutputChannelStereoPair (int index) const
+bool DATA::isOutputChannelStereoPair (int index) const
 {
     return false;
 }
 
-bool QVCA::acceptsMidi() const
+bool DATA::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -201,7 +201,7 @@ bool QVCA::acceptsMidi() const
    #endif
 }
 
-bool QVCA::producesMidi() const
+bool DATA::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -210,40 +210,40 @@ bool QVCA::producesMidi() const
    #endif
 }
 
-bool QVCA::silenceInProducesSilenceOut() const
+bool DATA::silenceInProducesSilenceOut() const
 {
     return false;
 }
 
-double QVCA::getTailLengthSeconds() const
+double DATA::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int QVCA::getNumPrograms()
+int DATA::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int QVCA::getCurrentProgram()
+int DATA::getCurrentProgram()
 {
     return 0;
 }
 
-void QVCA::setCurrentProgram (int index)
+void DATA::setCurrentProgram (int index)
 {
 	// Program numbers are not stored or recalled from SSP preset files and there is no way 
 	// to change a program from within the SSP software. The SSP software which hosts your 
 	// plugin will ONLY store and recall state using the functions below. 
 }
 
-const String QVCA::getProgramName (int index)
+const String DATA::getProgramName (int index)
 {
     return String("default");
 }
 
-void QVCA::changeProgramName (int index, const String& newName)
+void DATA::changeProgramName (int index, const String& newName)
 {
 	// The SSP's software does not provide for changing program names so this is something 
 	// you need to do (if you need it) in your own plugin GUI. Keep in mind the SSP software
@@ -251,7 +251,7 @@ void QVCA::changeProgramName (int index, const String& newName)
 	// a program number from within the SSP software.  
 }
 
-void QVCA::prepareToPlay (double sampleRate, int samplesPerBlock)
+void DATA::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
 	// Use this method as the place to do any pre-playback initialisation that you need..
 	// this is called by the SSP's software right after loading the plugin and before 
@@ -265,15 +265,15 @@ void QVCA::prepareToPlay (double sampleRate, int samplesPerBlock)
 	outBuffer.setSize(getNumOutputChannels(), samplesPerBlock, false, true, false); 
 }
 
-void QVCA::releaseResources()
+void DATA::releaseResources()
 {
 	// when playback stops, you can use this as an opportunity to free up any memory. 
 	// this is called when your plugin is being destroyed by the SSP host software. 
 }
 
-void QVCA::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
+void DATA::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-	// the QVCA plugin has 8 input and 8 output channels. 
+	// the DATA plugin has 8 input and 8 output channels.
 	// the ssp's software treats modulation and audio signals equally in its patcher matrix 
 	// so what you would typically do below is use one or more incoming signals to change 
 	// internal parameters (e.g. an incoming signal can change the frequency of an oscillator) 
@@ -315,7 +315,7 @@ void QVCA::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 	} 
 }
 
-bool QVCA::hasEditor() const
+bool DATA::hasEditor() const
 {
 	// your plugin needs to provide an editor in any case, since the SSP host software 
 	// requires one. so you cannot return false here. when the VST GUI is brought to 
@@ -327,14 +327,14 @@ bool QVCA::hasEditor() const
 	return true; 
 }
 
-AudioProcessorEditor* QVCA::createEditor()
+AudioProcessorEditor* DATA::createEditor()
 {
 	// this allocates your plugin editor. the SSP host software will take care of 
 	// deleting the editor when it destorys your plugin. 
-	return new QVCAEditor (*this);
+	return new DATAEditor (*this);
 }
 
-void QVCA::getStateInformation (MemoryBlock& destData)
+void DATA::getStateInformation (MemoryBlock& destData)
 {
 	// You should use this method to store your parameters in the memory block.
 	// You could do that either as raw data, or use the XML or ValueTree classes
@@ -354,7 +354,7 @@ void QVCA::getStateInformation (MemoryBlock& destData)
 
 	// obviously it makes no sense to store the button or encoder values from 
 	// paramValues and in a real plugin you would store other settings, such as gain, 
-	// cutoff, resonance etc. the QVCA doesn't have any settings at the moment, so 
+	// cutoff, resonance etc. the DATA doesn't have any settings at the moment, so
 	// we just store the data from paramValues as an example. 
 
 	// write parameter value array 
@@ -364,7 +364,7 @@ void QVCA::getStateInformation (MemoryBlock& destData)
 	destData.append(JucePlugin_Name, sizeof(JucePlugin_Name)); 
 }
 
-void QVCA::setStateInformation (const void* data, int sizeInBytes)
+void DATA::setStateInformation (const void* data, int sizeInBytes)
 {
 	// You should use this method to restore your parameters from the data buffer 
 	// passed to this function, whose contents will have been created originally by the 
@@ -400,5 +400,5 @@ void QVCA::setStateInformation (const void* data, int sizeInBytes)
 // this creates new instances of the plugin ...
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new QVCA();
+    return new DATA();
 }
