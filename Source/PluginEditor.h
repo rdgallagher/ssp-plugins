@@ -26,7 +26,8 @@
 class DATAEditor  : public AudioProcessorEditor, public Timer
 {
 public:
-	static const int nScopes = 8; 
+    // TODO: Get nScopes from number of incoming connections?
+	static const int nScopes = 16;
 	static const int keepout = 100; 
 
 	DATAEditor (DATA&);
@@ -41,7 +42,6 @@ private:
 	bool showParamValues; 
 
 	OwnedArray<Oscilloscope> in; 
-	OwnedArray<Oscilloscope> out; 
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DATAEditor)
 };

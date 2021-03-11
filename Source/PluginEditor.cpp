@@ -16,26 +16,9 @@ DATAEditor::DATAEditor (DATA& p)
 			processor.inBuffer, processor.lock, i);  
 		o->setInfo(String("In")+String(i+1)); 
 		o->setInfoCol(Colours::white); 
-		addAndMakeVisible(o); 
+		addAndMakeVisible(o);
 		in.add(o);
 	}
-
-	for (int i=0; i<nScopes; i++) { 
-		Oscilloscope* o = new Oscilloscope(
-			processor.outBuffer, processor.lock, i); 
-		o->setInfoCol(Colours::red); 
-		addAndMakeVisible(o); 
-		out.add(o); 
-	}
-
-	out[0]->setInfo(String("Out1=In1*In2")); 
-	out[1]->setInfo(String("Out2=-In1*In2")); 
-	out[2]->setInfo(String("Out3=In3*In4")); 
-	out[3]->setInfo(String("Out4=-In3*In4")); 
-	out[4]->setInfo(String("Out5=In5*In6")); 
-	out[5]->setInfo(String("Out6=-In5*In6")); 
-	out[6]->setInfo(String("Out7=In7*In8")); 
-	out[7]->setInfo(String("Out8=-In7*In8")); 
 
 	setSize (1600, 480);
 	startTimer(50); 
@@ -49,10 +32,6 @@ void DATAEditor::timerCallback()
 { 
 	for (int i=0; i<nScopes; i++) { 
 		in[i]->repaint(); 
-	}
-
-	for (int i=0; i<nScopes; i++) { 
-		out[i]->repaint(); 
 	}
 
 	// repaint our own canvas as well 
@@ -153,23 +132,18 @@ void DATAEditor::resized()
 	for (int col=0; col<in.size(); col++) { 
 
 		Oscilloscope* o = in[col]; 
-		assert(o); 
+		assert(o);
+
+		int scopeY;
+		if (col < in.size() / 2) {
+		    scopeY = 0;
+		} else {
+		    scopeY = h/2;
+		}
 
 		o->setBounds(
 			col*scopeWidth, 
-			0, 
-			scopeWidth, 
-			scopeHeight); 
-	}	
-
-	for (int col=0; col<out.size(); col++) { 
-	
-		Oscilloscope* o = out[col]; 
-		assert(o); 
-
-		o->setBounds(
-			col*scopeWidth, 
-			scopeHeight, 
+			scopeY,
 			scopeWidth, 
 			scopeHeight); 
 	}	
