@@ -179,7 +179,7 @@ const String DATA::getInputChannelName (int channelIndex) const
 
 const String DATA::getOutputChannelName (int channelIndex) const
 {
-    return outputNames[channelIndex];
+    return ""; // No output channels
 }
 
 bool DATA::isInputChannelStereoPair (int index) const
