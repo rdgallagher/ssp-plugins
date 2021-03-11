@@ -126,7 +126,7 @@ void DATAEditor::resized()
 		h -= keepout; 
 	}
 
-	int scopeWidth=w/nScopes; 
+	int scopeWidth=w/(nScopes/2);
 	int scopeHeight=h/2; 
 
 	for (int col=0; col<in.size(); col++) { 
@@ -135,7 +135,7 @@ void DATAEditor::resized()
 		assert(o);
 
 		int scopeY;
-		if (col < in.size() / 2) {
+		if (col < nScopes / 2) {
 		    scopeY = 0;
 		} else {
 		    scopeY = h/2;
