@@ -4,7 +4,7 @@
               bundleIdentifier="com.percussa.qvca" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="1" buildAU="0" buildRTAS="0" buildAAX="0"
               pluginName="qvca" pluginDesc="qvca" pluginManufacturer="percussa"
-              pluginManufacturerCode="Perc" pluginCode="QVCA" pluginChannelConfigs="{8, 8}"
+              pluginManufacturerCode="Perc" pluginCode="DATA" pluginChannelConfigs="{8, 8}"
               pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
               pluginAUExportPrefix="qvcaAU" pluginRTASCategory="" aaxIdentifier="com.percussa.qvca"
