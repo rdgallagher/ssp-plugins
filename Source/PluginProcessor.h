@@ -19,8 +19,9 @@
 #ifndef PLUGINPROCESSOR_H_INCLUDED
 #define PLUGINPROCESSOR_H_INCLUDED
 
+#include "../JuceLibraryCode/AppConfig.h"
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Percussa.h" 
+#include "Percussa.h"
 
 class DATA: public AudioProcessor
 {

@@ -201,28 +201,28 @@
  #define JucePlugin_Desc                   "data"
 #endif
 #ifndef  JucePlugin_Manufacturer
- #define JucePlugin_Manufacturer           "percussa"
+ #define JucePlugin_Manufacturer           "Rob Gallagher"
 #endif
 #ifndef  JucePlugin_ManufacturerWebsite
- #define JucePlugin_ManufacturerWebsite    "www.percussa.com"
+ #define JucePlugin_ManufacturerWebsite    ""
 #endif
 #ifndef  JucePlugin_ManufacturerEmail
- #define JucePlugin_ManufacturerEmail      ""
+ #define JucePlugin_ManufacturerEmail      "rdgallagher@hotmail.com"
 #endif
 #ifndef  JucePlugin_ManufacturerCode
- #define JucePlugin_ManufacturerCode       'Perc'
+ #define JucePlugin_ManufacturerCode       'RobG'
 #endif
 #ifndef  JucePlugin_PluginCode
  #define JucePlugin_PluginCode             'DATA'
 #endif
 #ifndef  JucePlugin_MaxNumInputChannels
- #define JucePlugin_MaxNumInputChannels    8
+ #define JucePlugin_MaxNumInputChannels    16
 #endif
 #ifndef  JucePlugin_MaxNumOutputChannels
- #define JucePlugin_MaxNumOutputChannels   8
+ #define JucePlugin_MaxNumOutputChannels   0
 #endif
 #ifndef  JucePlugin_PreferredChannelConfigurations
- #define JucePlugin_PreferredChannelConfigurations  {8, 8}
+ #define JucePlugin_PreferredChannelConfigurations  {16, 0}
 #endif
 #ifndef  JucePlugin_IsSynth
  #define JucePlugin_IsSynth                0
