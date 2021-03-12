@@ -8,8 +8,7 @@
 #include "Percussa.h"
 
 DATA::DATA():
-	inputNames  ({ "In1",  "In2",  "In3",  "In4",  "In5",  "In6",  "In7",  "In8", "In9",  "In10",  "In11",  "In12",  "In13",  "In14",  "In15",  "In16" }),
-	outputNames ({})
+	inputNames  ({ "In1",  "In2",  "In3",  "In4",  "In5",  "In6",  "In7",  "In8", "In9",  "In10",  "In11",  "In12",  "In13",  "In14",  "In15",  "In16" })
 {
 	std::memset(paramValues, 0, sizeof(paramValues));
 }
