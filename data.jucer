@@ -4,7 +4,7 @@
               bundleIdentifier="com.percussa.ssp.plugins.data" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="1" buildAU="0" buildRTAS="0" buildAAX="0"
               pluginName="data" pluginDesc="data" pluginManufacturer="Rob Gallagher"
-              pluginManufacturerCode="Perc" pluginCode="DATA" pluginChannelConfigs="{8, 8}"
+              pluginManufacturerCode="RobG" pluginCode="DATA" pluginChannelConfigs="{16, 0}"
               pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
               pluginAUExportPrefix="dataAU" pluginRTASCategory="" aaxIdentifier="com.percussa.ssp.plugins.data"
