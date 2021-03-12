@@ -14,7 +14,7 @@ DATAEditor::DATAEditor (DATA& p)
 	for (int i=0; i<nScopes; i++) { 
 		Oscilloscope* o = new Oscilloscope(
 			processor.inBuffer, processor.lock, i);  
-		o->setInfo(String("In")+String(i+1)); 
+		o->setInfo(String(i+1));
 		o->setInfoCol(Colours::white); 
 		addAndMakeVisible(o);
 		in.add(o);
