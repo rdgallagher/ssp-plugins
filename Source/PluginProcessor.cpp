@@ -346,6 +346,8 @@ void DATA::setStateInformation (const void* data, int sizeInBytes)
 	if (std::memcmp(data, JucePlugin_Name, sizeof(JucePlugin_Name)) != 0)
 		throw std::runtime_error("error reading plugin name");
 
+	// This is to avoid an error about arithmetic on a void pointer...
+	// Apparently you can turn this error off, but this works too.
 	char *wat = (char*)data;
 
 	wat += sizeof(JucePlugin_Name);
