@@ -72,8 +72,7 @@ private:
 public: 
 	CriticalSection lock;
 	AudioSampleBuffer inBuffer; 
-	AudioSampleBuffer outBuffer; 
-	std::vector<String> inputNames; 
+	std::vector<String> inputNames;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DATA)
 };

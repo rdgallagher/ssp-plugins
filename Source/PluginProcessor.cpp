@@ -261,7 +261,6 @@ void DATA::prepareToPlay (double sampleRate, int samplesPerBlock)
 	// processBlock() does not do any allocations. make sure buffers are cleared at
 	// the same time (clearExtraSpace)
 	inBuffer.setSize(getNumInputChannels(), samplesPerBlock, false, true, false);
-	outBuffer.setSize(getNumOutputChannels(), samplesPerBlock, false, true, false);
 }
 
 void DATA::releaseResources()
