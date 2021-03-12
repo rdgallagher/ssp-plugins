@@ -272,40 +272,14 @@ void DATA::releaseResources()
 
 void DATA::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-	// the DATA plugin has 8 input and 8 output channels.
+	// the DATA plugin has 16 input and 0 output channels.
 	// the ssp's software treats modulation and audio signals equally in its patcher matrix
 	// so what you would typically do below is use one or more incoming signals to change
 	// internal parameters (e.g. an incoming signal can change the frequency of an oscillator)
 	// if you don't want to do audio rate modulation you'd process the changes at a lower
 	// control rate.
 
-	// try to get lock and copy input buffer
-	if (lock.tryEnter()) {
-		for (int ch=0; ch<getNumInputChannels(); ch++)
-			inBuffer.copyFrom(ch, 0, buffer, ch, 0, buffer.getNumSamples());
-		lock.exit();
-	}
-
-	// process signals
-	for (int i=0; i<buffer.getNumSamples(); i++) {
-
-		// straight passthrough
-		buffer.setSample(0, i, buffer.getSample(0, i));
-		buffer.setSample(1, i, buffer.getSample(1, i));
-		buffer.setSample(2, i, buffer.getSample(2, i));
-		buffer.setSample(3, i, buffer.getSample(3, i));
-		buffer.setSample(4, i, buffer.getSample(4, i));
-		buffer.setSample(5, i, buffer.getSample(5, i));
-		buffer.setSample(6, i, buffer.getSample(6, i));
-		buffer.setSample(7, i, buffer.getSample(7, i));
-	}
-
-	// try to get lock and copy output buffer
-	if (lock.tryEnter()) {
-		for (int ch=0; ch<getNumOutputChannels(); ch++)
-			outBuffer.copyFrom(ch, 0, buffer, ch, 0, buffer.getNumSamples());
-		lock.exit();
-	}
+	// This scope plugin only displays stuff visually, so... la dolce vita?
 }
 
 bool DATA::hasEditor() const
