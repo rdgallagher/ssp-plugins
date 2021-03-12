@@ -134,15 +134,17 @@ void DATAEditor::resized()
 		Oscilloscope* o = in[col]; 
 		assert(o);
 
-		int scopeY;
+		int scopeX, scopeY;
 		if (col < nScopes / 2) {
+		    scopeX = col * scopeWidth;
 		    scopeY = 0;
 		} else {
+            scopeX = (col - (nScopes /2)) * scopeWidth;
 		    scopeY = h/2;
 		}
 
 		o->setBounds(
-			col*scopeWidth, 
+			scopeX,
 			scopeY,
 			scopeWidth, 
 			scopeHeight); 
