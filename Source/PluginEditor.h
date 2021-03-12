@@ -26,7 +26,7 @@
 class DATAEditor  : public AudioProcessorEditor, public Timer
 {
 public:
-    // TODO: Get nScopes from number of incoming connections?
+    // TODO: Get nScopes from number of active incoming connections?
 	static const int nScopes = JucePlugin_MaxNumInputChannels;
 	static const int keepout = 100; 
 

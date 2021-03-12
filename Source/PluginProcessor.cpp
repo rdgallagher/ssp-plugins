@@ -8,7 +8,8 @@
 #include "Percussa.h"
 
 DATA::DATA():
-	inputNames  ({ "In1",  "In2",  "In3",  "In4",  "In5",  "In6",  "In7",  "In8", "In9",  "In10",  "In11",  "In12",  "In13",  "In14",  "In15",  "In16" })
+	inputNames  ({ "In1",  "In2",  "In3",  "In4",  "In5",  "In6",  "In7",  "In8", "In9",  "In10",  "In11",  "In12",  "In13",  "In14",  "In15",  "In16" }),
+    outputNames ({ "Out1", "Out2", "Out3", "Out4", "Out5", "Out6", "Out7", "Out8", "Out9",  "Out10",  "Out11",  "Out12",  "Out13",  "Out14",  "Out15",  "Out16" })
 {
 	std::memset(paramValues, 0, sizeof(paramValues));
 }
@@ -178,7 +179,7 @@ const String DATA::getInputChannelName (int channelIndex) const
 
 const String DATA::getOutputChannelName (int channelIndex) const
 {
-    return ""; // No output channels
+    return outputNames[channelIndex];
 }
 
 bool DATA::isInputChannelStereoPair (int index) const
@@ -261,6 +262,7 @@ void DATA::prepareToPlay (double sampleRate, int samplesPerBlock)
 	// processBlock() does not do any allocations. make sure buffers are cleared at
 	// the same time (clearExtraSpace)
 	inBuffer.setSize(getNumInputChannels(), samplesPerBlock, false, true, false);
+    outBuffer.setSize(getNumOutputChannels(), samplesPerBlock, false, true, false);
 }
 
 void DATA::releaseResources()
@@ -271,14 +273,35 @@ void DATA::releaseResources()
 
 void DATA::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-	// the DATA plugin has 16 input and 0 output channels.
+	// the DATA plugin has 16 input and 16 output channels.
 	// the ssp's software treats modulation and audio signals equally in its patcher matrix
 	// so what you would typically do below is use one or more incoming signals to change
 	// internal parameters (e.g. an incoming signal can change the frequency of an oscillator)
 	// if you don't want to do audio rate modulation you'd process the changes at a lower
 	// control rate.
 
-	// This scope plugin only displays stuff visually, so... la dolce vita?
+    // try to get lock and copy input buffer
+    if (lock.tryEnter()) {
+        for (int ch=0; ch<getNumInputChannels(); ch++)
+            inBuffer.copyFrom(ch, 0, buffer, ch, 0, buffer.getNumSamples());
+        lock.exit();
+    }
+
+    // process signals
+    for (int i=0; i<buffer.getNumSamples(); i++) {
+
+        // straight passthrough
+        for (int j=0; j<getNumInputChannels(); j++) {
+            buffer.setSample(j, i, buffer.getSample(j, i));
+        }
+    }
+
+    // try to get lock and copy output buffer
+    if (lock.tryEnter()) {
+        for (int ch=0; ch<getNumOutputChannels(); ch++)
+            outBuffer.copyFrom(ch, 0, buffer, ch, 0, buffer.getNumSamples());
+        lock.exit();
+    }
 }
 
 bool DATA::hasEditor() const
