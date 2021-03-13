@@ -23,27 +23,27 @@
 #include "PluginProcessor.h"
 #include "Oscilloscope.h" 
 
-class SCOPEEditor  : public AudioProcessorEditor, public Timer
+class SCPEditor  : public AudioProcessorEditor, public Timer
 {
 public:
     // TODO: Get nScopes from number of active incoming connections?
 	static const int nScopes = JucePlugin_MaxNumInputChannels;
 	static const int keepout = 100; 
 
-	SCOPEEditor (SCOPE&);
-	~SCOPEEditor();
+	SCPEditor (SCP&);
+	~SCPEditor();
 
 	void paint (Graphics&) override;
 	void resized() override;
 	void timerCallback(); 
 
 private:
-	SCOPE& processor;
+	SCP& processor;
 	bool showParamValues; 
 
 	OwnedArray<Oscilloscope> in; 
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SCOPEEditor)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SCPEditor)
 };
 
 #endif  

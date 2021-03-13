@@ -3,7 +3,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-SCOPEEditor::SCOPEEditor (SCOPE& p)
+SCPEditor::SCPEditor (SCP& p)
     : AudioProcessorEditor (&p), processor (p)
 {
 	// set this to true to see the parameter values update 
@@ -24,11 +24,11 @@ SCOPEEditor::SCOPEEditor (SCOPE& p)
 	startTimer(50); 
 }
 
-SCOPEEditor::~SCOPEEditor()
+SCPEditor::~SCPEditor()
 {
 }
 
-void SCOPEEditor::timerCallback()
+void SCPEditor::timerCallback()
 { 
 	for (int i=0; i<nScopes; i++) { 
 		in[i]->repaint(); 
@@ -38,7 +38,7 @@ void SCOPEEditor::timerCallback()
 	repaint(); 
 }
 
-void SCOPEEditor::paint(Graphics& g)
+void SCPEditor::paint(Graphics& g)
 {
 	g.fillAll (Colours::black);
 
@@ -117,7 +117,7 @@ void SCOPEEditor::paint(Graphics& g)
 	} 
 }
 
-void SCOPEEditor::resized()
+void SCPEditor::resized()
 {
 	int w=getWidth(); 
 	int h=getHeight();

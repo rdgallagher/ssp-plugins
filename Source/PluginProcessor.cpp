@@ -7,28 +7,28 @@
 #include "PluginEditor.h"
 #include "Percussa.h"
 
-SCOPE::SCOPE():
+SCP::SCP():
 	inputNames  ({ "In1",  "In2",  "In3",  "In4",  "In5",  "In6",  "In7",  "In8", "In9",  "In10",  "In11",  "In12",  "In13",  "In14",  "In15",  "In16" }),
     outputNames ({ "Out1", "Out2", "Out3", "Out4", "Out5", "Out6", "Out7", "Out8", "Out9",  "Out10",  "Out11",  "Out12",  "Out13",  "Out14",  "Out15",  "Out16" })
 {
 	std::memset(paramValues, 0, sizeof(paramValues));
 }
 
-SCOPE::~SCOPE()
+SCP::~SCP()
 {
 }
 
-const String SCOPE::getName() const
+const String SCP::getName() const
 {
     return JucePlugin_Name;
 }
 
-int SCOPE::getNumParameters()
+int SCP::getNumParameters()
 {
     return numParams;
 }
 
-float SCOPE::getParameter (int index)
+float SCP::getParameter (int index)
 {
 	if (index < Percussa::sspFirst) return 0.00f;
 	if (index >= Percussa::sspLast) return 0.00f;
@@ -36,7 +36,7 @@ float SCOPE::getParameter (int index)
 	return paramValues[index-Percussa::sspFirst];
 }
 
-void SCOPE::setParameter (int index, float newValue)
+void SCP::setParameter (int index, float newValue)
 {
 	// The SSP's software uses VST parameters to pass the state of its hardware
 	// buttons and encoders to your plugin. See Percussa.h, these parameters
@@ -65,7 +65,7 @@ void SCOPE::setParameter (int index, float newValue)
 	// data like we do here.
 
 	//Logger::writeToLog(String::formatted(
-	//	"SCOPE::setParameter: index=%d newValue=%4.2f",
+	//	"SCP::setParameter: index=%d newValue=%4.2f",
 	//		index, newValue));
 
 	if (index < Percussa::sspFirst) return;
@@ -162,37 +162,37 @@ void SCOPE::setParameter (int index, float newValue)
 	}
 }
 
-const String SCOPE::getParameterName (int index)
+const String SCP::getParameterName (int index)
 {
     return String();
 }
 
-const String SCOPE::getParameterText (int index)
+const String SCP::getParameterText (int index)
 {
     return String();
 }
 
-const String SCOPE::getInputChannelName (int channelIndex) const
+const String SCP::getInputChannelName (int channelIndex) const
 {
     return inputNames[channelIndex];
 }
 
-const String SCOPE::getOutputChannelName (int channelIndex) const
+const String SCP::getOutputChannelName (int channelIndex) const
 {
     return outputNames[channelIndex];
 }
 
-bool SCOPE::isInputChannelStereoPair (int index) const
+bool SCP::isInputChannelStereoPair (int index) const
 {
     return false;
 }
 
-bool SCOPE::isOutputChannelStereoPair (int index) const
+bool SCP::isOutputChannelStereoPair (int index) const
 {
     return false;
 }
 
-bool SCOPE::acceptsMidi() const
+bool SCP::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -201,7 +201,7 @@ bool SCOPE::acceptsMidi() const
    #endif
 }
 
-bool SCOPE::producesMidi() const
+bool SCP::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -210,40 +210,40 @@ bool SCOPE::producesMidi() const
    #endif
 }
 
-bool SCOPE::silenceInProducesSilenceOut() const
+bool SCP::silenceInProducesSilenceOut() const
 {
     return false;
 }
 
-double SCOPE::getTailLengthSeconds() const
+double SCP::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int SCOPE::getNumPrograms()
+int SCP::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int SCOPE::getCurrentProgram()
+int SCP::getCurrentProgram()
 {
     return 0;
 }
 
-void SCOPE::setCurrentProgram (int index)
+void SCP::setCurrentProgram (int index)
 {
 	// Program numbers are not stored or recalled from SSP preset files and there is no way
 	// to change a program from within the SSP software. The SSP software which hosts your
 	// plugin will ONLY store and recall state using the functions below.
 }
 
-const String SCOPE::getProgramName (int index)
+const String SCP::getProgramName (int index)
 {
     return String("default");
 }
 
-void SCOPE::changeProgramName (int index, const String& newName)
+void SCP::changeProgramName (int index, const String& newName)
 {
 	// The SSP's software does not provide for changing program names so this is something
 	// you need to do (if you need it) in your own plugin GUI. Keep in mind the SSP software
@@ -251,7 +251,7 @@ void SCOPE::changeProgramName (int index, const String& newName)
 	// a program number from within the SSP software.
 }
 
-void SCOPE::prepareToPlay (double sampleRate, int samplesPerBlock)
+void SCP::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
 	// Use this method as the place to do any pre-playback initialisation that you need..
 	// this is called by the SSP's software right after loading the plugin and before
@@ -265,15 +265,15 @@ void SCOPE::prepareToPlay (double sampleRate, int samplesPerBlock)
     outBuffer.setSize(getNumOutputChannels(), samplesPerBlock, false, true, false);
 }
 
-void SCOPE::releaseResources()
+void SCP::releaseResources()
 {
 	// when playback stops, you can use this as an opportunity to free up any memory.
 	// this is called when your plugin is being destroyed by the SSP host software.
 }
 
-void SCOPE::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
+void SCP::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-	// the SCOPE plugin has 16 input and 16 output channels.
+	// the SCP plugin has 16 input and 16 output channels.
 	// the ssp's software treats modulation and audio signals equally in its patcher matrix
 	// so what you would typically do below is use one or more incoming signals to change
 	// internal parameters (e.g. an incoming signal can change the frequency of an oscillator)
@@ -304,7 +304,7 @@ void SCOPE::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
     }
 }
 
-bool SCOPE::hasEditor() const
+bool SCP::hasEditor() const
 {
 	// your plugin needs to provide an editor in any case, since the SSP host software
 	// requires one. so you cannot return false here. when the VST GUI is brought to
@@ -316,14 +316,14 @@ bool SCOPE::hasEditor() const
 	return true;
 }
 
-AudioProcessorEditor* SCOPE::createEditor()
+AudioProcessorEditor* SCP::createEditor()
 {
 	// this allocates your plugin editor. the SSP host software will take care of
 	// deleting the editor when it destorys your plugin.
-	return new SCOPEEditor (*this);
+	return new SCPEditor (*this);
 }
 
-void SCOPE::getStateInformation (MemoryBlock& destData)
+void SCP::getStateInformation (MemoryBlock& destData)
 {
 	// You should use this method to store your parameters in the memory block.
 	// You could do that either as raw data, or use the XML or ValueTree classes
@@ -343,7 +343,7 @@ void SCOPE::getStateInformation (MemoryBlock& destData)
 
 	// obviously it makes no sense to store the button or encoder values from
 	// paramValues and in a real plugin you would store other settings, such as gain,
-	// cutoff, resonance etc. the SCOPE doesn't have any settings at the moment, so
+	// cutoff, resonance etc. the SCP doesn't have any settings at the moment, so
 	// we just store the data from paramValues as an example.
 
 	// write parameter value array
@@ -353,7 +353,7 @@ void SCOPE::getStateInformation (MemoryBlock& destData)
 	destData.append(JucePlugin_Name, sizeof(JucePlugin_Name));
 }
 
-void SCOPE::setStateInformation (const void* data, int sizeInBytes)
+void SCP::setStateInformation (const void* data, int sizeInBytes)
 {
 	// You should use this method to restore your parameters from the data buffer
 	// passed to this function, whose contents will have been created originally by the
@@ -391,5 +391,5 @@ void SCOPE::setStateInformation (const void* data, int sizeInBytes)
 // this creates new instances of the plugin ...
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new SCOPE();
+    return new SCP();
 }
