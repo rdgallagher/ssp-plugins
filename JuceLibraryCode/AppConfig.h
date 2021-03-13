@@ -195,10 +195,10 @@
  #define JucePlugin_Build_AAX              0
 #endif
 #ifndef  JucePlugin_Name
- #define JucePlugin_Name                   "data"
+ #define JucePlugin_Name                   "scope"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "data"
+ #define JucePlugin_Desc                   "scope"
 #endif
 #ifndef  JucePlugin_Manufacturer
  #define JucePlugin_Manufacturer           "Rob Gallagher"
@@ -213,7 +213,7 @@
  #define JucePlugin_ManufacturerCode       'RobG'
 #endif
 #ifndef  JucePlugin_PluginCode
- #define JucePlugin_PluginCode             'DATA'
+ #define JucePlugin_PluginCode             'SCOPE'
 #endif
 #ifndef  JucePlugin_MaxNumInputChannels
  #define JucePlugin_MaxNumInputChannels    16
@@ -261,16 +261,16 @@
  #define JucePlugin_AUSubType              JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_AUExportPrefix
- #define JucePlugin_AUExportPrefix         dataAU
+ #define JucePlugin_AUExportPrefix         scopeAU
 #endif
 #ifndef  JucePlugin_AUExportPrefixQuoted
- #define JucePlugin_AUExportPrefixQuoted   "dataAU"
+ #define JucePlugin_AUExportPrefixQuoted   "scopeAU"
 #endif
 #ifndef  JucePlugin_AUManufacturerCode
  #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
 #endif
 #ifndef  JucePlugin_CFBundleIdentifier
- #define JucePlugin_CFBundleIdentifier     com.percussa.ssp.plugins.data
+ #define JucePlugin_CFBundleIdentifier     com.percussa.ssp.plugins.scope
 #endif
 #ifndef  JucePlugin_RTASCategory
  #define JucePlugin_RTASCategory           ePlugInCategory_None
@@ -288,7 +288,7 @@
  #define JucePlugin_RTASDisableMultiMono   0
 #endif
 #ifndef  JucePlugin_AAXIdentifier
- #define JucePlugin_AAXIdentifier          com.percussa.ssp.plugins.data
+ #define JucePlugin_AAXIdentifier          com.percussa.ssp.plugins.scope
 #endif
 #ifndef  JucePlugin_AAXManufacturerCode
  #define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode

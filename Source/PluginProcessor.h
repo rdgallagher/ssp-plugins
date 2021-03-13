@@ -23,11 +23,11 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Percussa.h"
 
-class DATA: public AudioProcessor
+class SCOPE: public AudioProcessor
 {
 public:
-	DATA();
-	~DATA();
+	SCOPE();
+	~SCOPE();
 
 	void prepareToPlay (double sampleRate, int samplesPerBlock) override;
 	void releaseResources() override;
@@ -76,7 +76,7 @@ public:
 	std::vector<String> inputNames;
 	std::vector<String> outputNames;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DATA)
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SCOPE)
 };
 
 #endif 

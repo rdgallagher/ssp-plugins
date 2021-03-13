@@ -3,7 +3,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-DATAEditor::DATAEditor (DATA& p)
+SCOPEEditor::SCOPEEditor (SCOPE& p)
     : AudioProcessorEditor (&p), processor (p)
 {
 	// set this to true to see the parameter values update 
@@ -24,11 +24,11 @@ DATAEditor::DATAEditor (DATA& p)
 	startTimer(50); 
 }
 
-DATAEditor::~DATAEditor()
+SCOPEEditor::~SCOPEEditor()
 {
 }
 
-void DATAEditor::timerCallback()
+void SCOPEEditor::timerCallback()
 { 
 	for (int i=0; i<nScopes; i++) { 
 		in[i]->repaint(); 
@@ -38,7 +38,7 @@ void DATAEditor::timerCallback()
 	repaint(); 
 }
 
-void DATAEditor::paint(Graphics& g)
+void SCOPEEditor::paint(Graphics& g)
 {
 	g.fillAll (Colours::black);
 
@@ -117,7 +117,7 @@ void DATAEditor::paint(Graphics& g)
 	} 
 }
 
-void DATAEditor::resized()
+void SCOPEEditor::resized()
 {
 	int w=getWidth(); 
 	int h=getHeight();
@@ -126,6 +126,8 @@ void DATAEditor::resized()
 		h -= keepout; 
 	}
 
+	// TODO: I feel like modulo could be used here
+	// TODO: Only split into two rows if there are more than... 4? scopes
 	int scopeWidth=w/(nScopes/2);
 	int scopeHeight=h/2; 
 

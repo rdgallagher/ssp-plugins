@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="LFrQVa" name="data" projectType="audioplug" version="1.0.0"
-              bundleIdentifier="com.percussa.ssp.plugins.data" includeBinaryInAppConfig="1"
+<JUCERPROJECT id="LFrQVa" name="scope" projectType="audioplug" version="1.0.0"
+              bundleIdentifier="com.percussa.ssp.plugins.scope" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="1" buildAU="0" buildRTAS="0" buildAAX="0"
-              pluginName="data" pluginDesc="data" pluginManufacturer="Rob Gallagher"
-              pluginManufacturerCode="RobG" pluginCode="DATA" pluginChannelConfigs="{16, 16}"
+              pluginName="scope" pluginDesc="scope" pluginManufacturer="Rob Gallagher"
+              pluginManufacturerCode="RobG" pluginCode="SCOPE" pluginChannelConfigs="{16, 16}"
               pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
-              pluginAUExportPrefix="dataAU" pluginRTASCategory="" aaxIdentifier="com.percussa.ssp.plugins.data"
+              pluginAUExportPrefix="scopeAU" pluginRTASCategory="" aaxIdentifier="com.percussa.ssp.plugins.scope"
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="3.1.1"
               companyName="percussa" companyWebsite="www.percussa.com">
-  <MAINGROUP id="LI9Efo" name="data">
+  <MAINGROUP id="LI9Efo" name="scope">
     <GROUP id="{C0553C7B-09BA-4FC3-4E85-F32F355F9FF1}" name="Source">
       <FILE id="TjiVmn" name="Percussa.h" compile="0" resource="0" file="Source/Percussa.h"/>
       <FILE id="ODpziw" name="Oscilloscope.cpp" compile="1" resource="0"
@@ -29,9 +29,9 @@
     <LINUX_MAKE targetFolder="Builds/Linux" vstFolder="~/SDKs/vstsdk2.4" vst3Folder="~/SDKs/vst3-sdk">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
-                       targetName="data" binaryPath="Builds/Linux/build/Debug" linuxArchitecture=""/>
+                       targetName="scope" binaryPath="Builds/Linux/build/Debug" linuxArchitecture=""/>
         <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="3"
-                       targetName="data" binaryPath="Builds/Linux/build/Release" linuxArchitecture=""/>
+                       targetName="scope" binaryPath="Builds/Linux/build/Release" linuxArchitecture=""/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../juce"/>
