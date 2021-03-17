@@ -9,16 +9,12 @@ SCPEditor::SCPEditor (SCP& p)
 	// set this to true to see the parameter values update 
 	// in the vst plugin GUI (editor) when turning encoders/
 	// pushing buttons 
-	showParamValues = false; 
+	showParamValues = false;
 
-	for (int i=0; i<nScopes; i++) { 
-		Oscilloscope* o = new Oscilloscope(
-			processor.inBuffer, processor.lock, i);  
-		o->setInfo(String(i+1));
-		o->setInfoCol(Colours::white); 
-		addAndMakeVisible(o);
-		in.add(o);
-	}
+    scope = new Oscilloscope(processor.inBuffer, processor.lock);
+    scope->setInfo(String(""));
+    scope->setInfoCol(Colours::white);
+    addAndMakeVisible(scope);
 
 	setSize (1600, 480);
 	startTimer(50); 
@@ -30,9 +26,7 @@ SCPEditor::~SCPEditor()
 
 void SCPEditor::timerCallback()
 { 
-	for (int i=0; i<nScopes; i++) { 
-		in[i]->repaint(); 
-	}
+	scope->repaint();
 
 	// repaint our own canvas as well 
 	repaint(); 
@@ -126,29 +120,6 @@ void SCPEditor::resized()
 		h -= keepout; 
 	}
 
-	// TODO: I feel like modulo could be used here
-	// TODO: Only split into two rows if there are more than... 4? scopes
-	int scopeWidth=w/(nScopes/2);
-	int scopeHeight=h/2; 
-
-	for (int col=0; col<in.size(); col++) { 
-
-		Oscilloscope* o = in[col]; 
-		assert(o);
-
-		int scopeX, scopeY;
-		if (col < nScopes / 2) {
-		    scopeX = col * scopeWidth;
-		    scopeY = 0;
-		} else {
-            scopeX = (col - (nScopes /2)) * scopeWidth;
-		    scopeY = h/2;
-		}
-
-		o->setBounds(
-			scopeX,
-			scopeY,
-			scopeWidth, 
-			scopeHeight); 
-	}	
+	assert(scope);
+    scope->setBounds(0, 0, w, h);
 }

@@ -26,9 +26,7 @@
 class SCPEditor  : public AudioProcessorEditor, public Timer
 {
 public:
-    // TODO: Get nScopes from number of active incoming connections?
-	static const int nScopes = JucePlugin_MaxNumInputChannels;
-	static const int keepout = 100; 
+	static const int keepout = 100;
 
 	SCPEditor (SCP&);
 	~SCPEditor();
@@ -39,9 +37,8 @@ public:
 
 private:
 	SCP& processor;
-	bool showParamValues; 
-
-	OwnedArray<Oscilloscope> in; 
+	bool showParamValues;
+	Oscilloscope* scope;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SCPEditor)
 };
