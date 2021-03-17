@@ -3,13 +3,16 @@ Plugins for the Percussa SSP
 
 Visit http://www.percussa.com/ for more info about the Percussa SSP Eurorack module. For any questions visit the forum at http://forum.percussa.com/ 
 
-### Development
+### Build and install plugins
 
-#### Get Dependencies
+Start in this repo...
+- `cd ssp-plugins`
+
+#### Download dependencies (one time setup)
 - `git submodule init`
 - `git submodule update`
 
-#### Build Docker image for cross-compilation
+#### Build Docker image for cross-compilation (one time setup)
 - `docker build ssp-vst .`
 - `docker run --rm ssp-vst > dockcross`
 - `chmod +x dockcross`
