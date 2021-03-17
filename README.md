@@ -17,3 +17,6 @@ Visit http://www.percussa.com/ for more info about the Percussa SSP Eurorack mod
 
 #### Build plugin for SSP
 - `dockcross bash -c 'cd plugins/scp/Builds/Linux && make CONFIG=Release'`
+
+#### SCP uhh... SCP plugin to SSP
+- ` scp plugins/scp/Builds/Linux/build/Debug/scp.so linaro@192.168.0.6:/media/linaro/SYNTHOR/plugins`
