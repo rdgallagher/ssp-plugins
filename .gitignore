@@ -31,8 +31,14 @@
 *.out
 *.app
 
+# Archives
+*.zip
+
 # IDE files
 .idea/
 
 # CMake
 cmake-build-debug/
+
+# Mac
+.DS_Store
