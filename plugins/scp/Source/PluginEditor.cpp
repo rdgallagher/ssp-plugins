@@ -11,7 +11,7 @@ SCPEditor::SCPEditor (SCP& p)
 	// pushing buttons 
 	showParamValues = false;
 
-    scope = new Oscilloscope(processor.inBuffer, processor.lock);
+    scope = new Oscilloscope(processor.inBuffer, processor.lock, processor.getSampleRate());
     addAndMakeVisible(scope);
 
 	setSize (1600, 480);

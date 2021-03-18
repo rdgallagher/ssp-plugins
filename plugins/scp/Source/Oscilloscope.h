@@ -26,9 +26,10 @@ private:
     const AudioSampleBuffer &_asb;
     CriticalSection &_lock;
     OwnedArray<Colour> _colours;
+    double _sampleRate;
 public:
-    Oscilloscope(const AudioSampleBuffer &asb, CriticalSection &lock) :
-            _asb(asb), _lock(lock) {
+    Oscilloscope(const AudioSampleBuffer &asb, CriticalSection &lock, double sampleRate) :
+            _asb(asb), _lock(lock), _sampleRate(sampleRate) {
 
         // TODO: There's got to be a better way...
         _colours.add(new Colour (Colours::green));
