@@ -12,8 +12,6 @@ SCPEditor::SCPEditor (SCP& p)
 	showParamValues = false;
 
     scope = new Oscilloscope(processor.inBuffer, processor.lock);
-    scope->setInfo(String(""));
-    scope->setInfoCol(Colours::white);
     addAndMakeVisible(scope);
 
 	setSize (1600, 480);
@@ -36,27 +34,14 @@ void SCPEditor::paint(Graphics& g)
 {
 	g.fillAll (Colours::black);
 
-	// show plugin name in the background 
-	Font f(Font::getDefaultMonospacedFontName(), 
-		0.9f*getHeight(), Font::plain);
-	g.setFont(f);
-	g.setColour(Colour(30, 30, 30));
-
-	int w=getWidth(); 
+	int w=getWidth();
 	int h=getHeight();
 
 	if (showParamValues) { 
 		h -= keepout; 
 	}
 
-	g.drawFittedText(
-		JucePlugin_Name,
-		0, 0,
-		w, h,
-		Justification::centred,
-		1);
-
-	// paint parameter values 
+	// paint parameter values
 	if (showParamValues) { 
 
 		Font f(Font::getDefaultMonospacedFontName(), 
@@ -120,6 +105,5 @@ void SCPEditor::resized()
 		h -= keepout; 
 	}
 
-	assert(scope);
     scope->setBounds(0, 0, w, h);
 }

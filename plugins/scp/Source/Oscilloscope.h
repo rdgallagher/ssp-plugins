@@ -21,40 +21,27 @@
 #include <assert.h>
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class Oscilloscope: public Component
-{
-private: 
-	const AudioSampleBuffer& _asb; 
-	CriticalSection& _lock; 
-	bool _showInfo;
-	String _info; 
-	Colour _infoCol; 
+class Oscilloscope : public Component {
+private:
+    const AudioSampleBuffer &_asb;
+    CriticalSection &_lock;
+    OwnedArray<Colour> _colours;
 public:
-	Oscilloscope(const AudioSampleBuffer& asb, CriticalSection& lock):
-		_asb(asb), _lock(lock)
-	{ 
-		_showInfo = true; 
-		_info = String("Info"); 
-		_infoCol = Colours::grey; 
-	}
+    Oscilloscope(const AudioSampleBuffer &asb, CriticalSection &lock) :
+            _asb(asb), _lock(lock) {
 
-	void setInfo(const String& info) { 
-		_info = info; 
-		repaint(); 
-	}
-
-	void setInfoCol(const Colour& col) { 
-		_infoCol = col; 
-		repaint(); 
-	}
-
-	void setShowInfo(bool show) { 
-		_showInfo = show; 
-		repaint(); 
-	}
+        // TODO: There's got to be a better way...
+        _colours.add(new Colour (Colours::green));
+        _colours.add(new Colour (Colours::cyan));
+        _colours.add(new Colour (Colours::red));
+        _colours.add(new Colour (Colours::yellow));
+    }
 
 private:
-	void paint(Graphics &g);
-	juce_UseDebuggingNewOperator
+    void paint(Graphics &g) override;
+
+    void drawChannel(Graphics &g, float w, float h, int channel, Colour colour) const;
+
+    juce_UseDebuggingNewOperator
 };
 
