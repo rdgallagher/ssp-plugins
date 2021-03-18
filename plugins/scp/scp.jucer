@@ -4,7 +4,7 @@
               bundleIdentifier="com.percussa.ssp.plugins.scp" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="1" buildAU="0" buildRTAS="0" buildAAX="0"
               pluginName="scp" pluginDesc="scp" pluginManufacturer="Rob Gallagher"
-              pluginManufacturerCode="RobG" pluginCode="SCP" pluginChannelConfigs="{16, 16}"
+              pluginManufacturerCode="RobG" pluginCode="SCP" pluginChannelConfigs="{4, 4}"
               pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
               pluginSilenceInIsSilenceOut="0" pluginEditorRequiresKeys="0"
               pluginAUExportPrefix="scpAU" pluginRTASCategory="" aaxIdentifier="com.percussa.ssp.plugins.scp"

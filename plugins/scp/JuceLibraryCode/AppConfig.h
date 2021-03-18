@@ -216,13 +216,13 @@
  #define JucePlugin_PluginCode             'SCP'
 #endif
 #ifndef  JucePlugin_MaxNumInputChannels
- #define JucePlugin_MaxNumInputChannels    16
+ #define JucePlugin_MaxNumInputChannels    4
 #endif
 #ifndef  JucePlugin_MaxNumOutputChannels
- #define JucePlugin_MaxNumOutputChannels   16
+ #define JucePlugin_MaxNumOutputChannels   4
 #endif
 #ifndef  JucePlugin_PreferredChannelConfigurations
- #define JucePlugin_PreferredChannelConfigurations  {16, 16}
+ #define JucePlugin_PreferredChannelConfigurations  {4, 4}
 #endif
 #ifndef  JucePlugin_IsSynth
  #define JucePlugin_IsSynth                0
