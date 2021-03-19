@@ -45,10 +45,24 @@ void Oscilloscope::paint(Graphics &g) {
         Colour &colour = *_colours.getUnchecked(channel);
         g.setColour(colour);
 
-        // draw legend
-        g.drawSingleLineText("-" + String(channel + 1), 25 + (50 * channel), h - 30);
+        // draw line above relevant encoder
+        const int gutterWidth = 30;
+        const int gutterHeight = 30;
 
-        // draw line
+        const int encoderWidth = 150;
+        const int encoderSpacing = 75;
+        const int encoderPosition = encoderWidth + encoderSpacing;
+        const int encoderStartX = gutterWidth + (encoderPosition * channel);
+        const int encoderEndX = encoderStartX + encoderWidth;
+        const int encoderThickness = 5;
+
+        g.drawLine(encoderStartX,
+                   h - gutterHeight,
+                   encoderEndX,
+                   h - gutterHeight,
+                   encoderThickness);
+
+        // draw trace line
         drawChannel(g, w, h, channel, colour);
     }
 }
