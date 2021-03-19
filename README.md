@@ -12,9 +12,8 @@ Start in this repo...
 - `git submodule init`
 - `git submodule update`
 
-#### Build Docker image for cross-compilation (one time setup)
-- `docker build ssp-vst .`
-- `docker run --rm ssp-vst > dockcross`
+#### Download Docker image for cross-compilation (one time setup)
+- `docker run --rm rdgallagher/ssp-vst > dockcross`
 - `chmod +x dockcross`
 - `mv dockcross ~/bin/` or elsewhere on your PATH
 
@@ -22,4 +21,4 @@ Start in this repo...
 - `dockcross bash -c 'cd plugins/scp/Builds/Linux && make CONFIG=Release'`
 
 #### SCP uhh... SCP plugin to SSP
-- ` scp plugins/scp/Builds/Linux/build/Debug/scp.so linaro@192.168.0.6:/media/linaro/SYNTHOR/plugins`
+- `scp plugins/scp/Builds/Linux/build/Debug/scp.so linaro@192.168.0.6:/media/linaro/SYNTHOR/plugins`

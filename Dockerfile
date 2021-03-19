@@ -1,6 +1,6 @@
 FROM dockcross/linux-armv7a
 
-ENV DEFAULT_DOCKCROSS_IMAGE ssp-vst
+ENV DEFAULT_DOCKCROSS_IMAGE rdgallagher/ssp-vst
 RUN apt-get install && apt-get install -y \
   clang \
   git \
