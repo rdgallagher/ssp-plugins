@@ -11,7 +11,10 @@ SCPEditor::SCPEditor (SCP& p)
 	// pushing buttons 
 	showParamValues = false;
 
-    scope = new Oscilloscope(processor.inBuffer, processor.lock, processor);
+	showBackground = true;
+	showBackgroundButtonPressed = false;
+
+    scope = new Oscilloscope(processor.inBuffer, processor.lock, processor, showBackground);
     addAndMakeVisible(scope);
 
 	setSize (1600, 480);
@@ -24,7 +27,18 @@ SCPEditor::~SCPEditor()
 }
 
 void SCPEditor::timerCallback()
-{ 
+{
+    // Toggle scope background when Left Shift button is pressed
+    // TODO: This sometimes doesn't get called while the button is pressed...
+    // TODO: Move to adding an event onto a queue in processor to be consumed here
+    if (processor.getParameter(Percussa::sspSwShiftL) > 0.5f && !showBackgroundButtonPressed) {
+        showBackgroundButtonPressed = true;
+        showBackground = !showBackground;
+        scope->setShowBackground(showBackground);
+    } else if (processor.getParameter(Percussa::sspSwShiftL) < 0.5f && showBackgroundButtonPressed) {
+        showBackgroundButtonPressed = false;
+    };
+
 	scope->repaint();
 
 	// repaint our own canvas as well 

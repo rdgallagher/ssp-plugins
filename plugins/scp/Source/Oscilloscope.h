@@ -28,9 +28,10 @@ private:
     CriticalSection &_lock;
     OwnedArray<Colour> _colours;
     SCP &_processor;
+    bool _showBackground;
 public:
-    Oscilloscope(const AudioSampleBuffer &asb, CriticalSection &lock, SCP &processor) :
-            _asb(asb), _lock(lock), _processor(processor) {
+    Oscilloscope(const AudioSampleBuffer &asb, CriticalSection &lock, SCP &processor, bool showBackground) :
+            _asb(asb), _lock(lock), _processor(processor), _showBackground(showBackground) {
 
         // TODO: There's got to be a better way...
         _colours.add(new Colour (Colours::green));
@@ -38,6 +39,8 @@ public:
         _colours.add(new Colour (Colours::red));
         _colours.add(new Colour (Colours::yellow));
     }
+
+    void setShowBackground(bool showBackground);
 
 private:
     void paint(Graphics &g) override;

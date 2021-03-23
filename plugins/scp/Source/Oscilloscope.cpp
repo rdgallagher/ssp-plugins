@@ -14,19 +14,21 @@ void Oscilloscope::paint(Graphics &g) {
     g.setFont(f);
     g.setColour(Colours::white);
 
-    // draw background grid
-    juce::Rectangle<int> background(0, 0, getWidth(), getHeight());
+    if (_showBackground) {
+        // draw background grid
+        juce::Rectangle<int> background(0, 0, getWidth(), getHeight());
 
-    const int xSquares = 20;
-    const int xSquarePixels = w / xSquares;
+        const int xSquares = 20;
+        const int xSquarePixels = w / xSquares;
 
-    const int ySquares = 10;
-    const int ySquarePixels = h / ySquares;
+        const int ySquares = 10;
+        const int ySquarePixels = h / ySquares;
 
-    g.fillCheckerBoard(background, xSquarePixels, ySquarePixels, Colour(0x66666666), Colours::transparentBlack);
+        g.fillCheckerBoard(background, xSquarePixels, ySquarePixels, Colour(0x66666666), Colours::transparentBlack);
 
-    // draw zero voltage line (x axis)
-    g.drawHorizontalLine(h / 2, 0, w);
+        // draw zero voltage line (x axis)
+        g.drawHorizontalLine(h / 2, 0, w);
+    }
 
     // draw channels
     for (int channel = 0; channel < _asb.getNumChannels(); channel++) {
@@ -53,6 +55,12 @@ void Oscilloscope::paint(Graphics &g) {
         // draw trace line
         drawChannel(g, w, h, channel, colour);
     }
+
+    // draw toggle background button
+    g.setColour(Colours::white);
+    juce::Rectangle<int> toggleBackgroundButton(w - 120, h - 45, 50, 30);
+    g.fillCheckerBoard(toggleBackgroundButton, 25, 15, Colour(0xff333333), Colours::black);
+    g.drawRect(toggleBackgroundButton);
 }
 
 void Oscilloscope::drawChannel(Graphics &g, float w, float h, int channel, Colour colour) const {
@@ -90,5 +98,9 @@ void Oscilloscope::drawChannel(Graphics &g, float w, float h, int channel, Colou
 
         phase += step;
     }
+}
+
+void Oscilloscope::setShowBackground(bool showBackground) {
+    _showBackground = showBackground;
 }
 

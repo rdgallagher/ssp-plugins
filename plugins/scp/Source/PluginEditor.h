@@ -39,6 +39,8 @@ private:
 	SCP& processor;
 	bool showParamValues;
 	Oscilloscope* scope;
+	bool showBackground;
+	bool showBackgroundButtonPressed;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SCPEditor)
 };
