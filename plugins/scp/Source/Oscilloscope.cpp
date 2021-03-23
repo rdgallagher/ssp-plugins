@@ -64,19 +64,22 @@ void Oscilloscope::drawChannel(Graphics &g, float w, float h, int channel, Colou
 
     // working across screen (and thru buffer)
     for (int i = 0; i < (int) w; i++) {
-        // get sample at pixel, val = +/-1.0 (+/-5V)
+
+        // get sample at pixel, val = +/-1.0f (+/-5V)
         float val = _asb.getSample(channel, (int) phase);
 
-        // if val goes off the edge, don't display
-        if (val <= -1.00f || val >= 1.00f) val = 0.00f;
+        // scale val to encoder value
+        const float pressedEncoderValue = _processor.getParameter(Percussa::sspLast - (4 - channel));
+        const float scalingFactor = pow(2, pressedEncoderValue / 4);
+        val = val * scalingFactor;
 
-        val = 1.0f - (val + 1.0f + (_processor.getParameter(channel) / 4)) * 0.5f;
+        // center val on the screen (0.0f -> 1.0f)
+        const float encoderValue = _processor.getParameter(channel);
+        const float positionOffset = encoderValue / 8;
+        val = 1.0f - (val + 1.0f + positionOffset) * 0.5f;
 
         // scale val to screen height in pixels
         val = val * h;
-
-        if (val > h) val = h;
-        else if (val < 0.0f) val = 0.0f;
 
         if (val == 0.5f) {
             g.setColour(Colours::transparentBlack);

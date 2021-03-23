@@ -120,10 +120,18 @@ namespace Percussa {
 		sspInEn21, 
 		sspInEn22, 
 		sspInEn23, 
-		sspInEn24, 
+		sspInEn24,
 
-		sspLast, 
-	}; 
+        // These are not actual controls on the SSP,
+        // but are here to record paramValues for SCP
+        // - EncPushed = turning encoder while pressed
+        sspEncPressed1,
+        sspEncPressed2,
+        sspEncPressed3,
+        sspEncPressed4,
+
+        sspLast,
+    };
 }; 
 
 #endif

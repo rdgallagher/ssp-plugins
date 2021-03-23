@@ -47,11 +47,11 @@ void SCP::setParameter (int index, float newValue)
 	// desktop DAWs.
 
 	// Calls to the setParameter function of your VST plugin might be done from
-	// the ssp's software audio callback which means you cannot do any gui,
+	// the SSP's software audio callback which means you cannot do any gui,
 	// file or other time consuming operations in your setParameter function.
 
 	// See the JUCE documentation and examples for AsyncUpdater, ChangeBroadcaster
-	// ... for suggestions on triggering updates on a diferent thread from within
+	// ... for suggestions on triggering updates on a different thread from within
 	// setParameter().
 
 	// the paramValues array used below is used to store encoder/button data
@@ -77,6 +77,16 @@ void SCP::setParameter (int index, float newValue)
 		case Percussa::sspEnc3:
 		case Percussa::sspEnc4:
 		{
+            // If encoder is pressed, set paramValues[sspEncPressedX] instead
+		    if (paramValues[index + 4] > 0.5f) {
+                if (newValue > 0.5) {
+                    paramValues[Percussa::sspLast - (4 - index)]++;
+                } else if (newValue < 0.5) {
+                    paramValues[Percussa::sspLast - (4 - index)]--;
+                }
+		        break;
+		    }
+
 			if (newValue > 0.5) {
 				paramValues[index-Percussa::sspFirst]++;
 			} else if (newValue < 0.5) {
@@ -370,7 +380,7 @@ void SCP::setStateInformation (const void* data, int sizeInBytes)
 		throw std::runtime_error("error reading plugin name");
 
 	// This is to avoid an error about arithmetic on a void pointer...
-	// Apparently you can turn this error off, but this works too.
+	// TODO: Apparently you can turn this error off, but this works too.
 	char *wat = (char*)data;
 
 	wat += sizeof(JucePlugin_Name);
